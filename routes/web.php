@@ -3,6 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('home');
-})->name('home');
+use App\Http\Controllers\ViewController;
+
+Route::get('/', [ViewController::class, 'viewHome'])->name('home');

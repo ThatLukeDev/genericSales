@@ -13,7 +13,7 @@ class Detail extends Model
         "description"
     ];
 
-    public function getPage($page) {
+    public static function getPage($page) {
         return Detail::firstOrCreate(["page" => $page], ["title" => "Title", "text" => "Text", "description" => "Description"]);
     }
 }
