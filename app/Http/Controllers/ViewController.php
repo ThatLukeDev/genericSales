@@ -10,6 +10,12 @@ use App\Models\Detail;
 class ViewController extends Controller
 {
     function viewHome() {
-        return Inertia::render('home', ["detail" => Detail::getPage("home")]);
+        return Inertia::render('page', ["detail" => Detail::getPage("home")]);
+    }
+    function viewAbout() {
+        return Inertia::render('page', ["detail" => Detail::getPage("about")]);
+    }
+    function viewContact() {
+        return Inertia::render('page', ["detail" => Detail::getPage("contact")]);
     }
 }
