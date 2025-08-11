@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Navbar from '@/components/navbar'
 
-export default function Home({ detail }) {
+export default function Page({ detail }) {
     return (
         <>
             <Navbar />
