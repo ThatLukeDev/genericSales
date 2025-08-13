@@ -5,12 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
+use Illuminate\Support\Facades\Auth;
+
 class AdminController extends Controller
 {
     function viewLogin() {
         return Inertia::render('login');
     }
 
-    function login() {
+    function login(Request $request) {
+        $validated = $request->validate([
+            "username" => "required",
+            "password" => "required",
+        ]);
+
+        if (Auth::attempt($validated)) {
+            return redirect("/admin");
+        }
+
+        return back()->withErrors(["err" => "Invalid credentials"]);
     }
 }
