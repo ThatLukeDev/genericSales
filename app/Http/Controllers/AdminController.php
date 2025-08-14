@@ -15,7 +15,7 @@ class AdminController extends Controller
 
     function login(Request $request) {
         $validated = $request->validate([
-            "username" => "required",
+            "email" => "required",
             "password" => "required",
         ]);
 
@@ -24,5 +24,9 @@ class AdminController extends Controller
         }
 
         return back()->withErrors(["err" => "Invalid credentials"]);
+    }
+
+    function viewAdmin() {
+	    return Inertia::render('admin');
     }
 }

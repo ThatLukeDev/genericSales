@@ -10,7 +10,7 @@ export default function Admin() {
             <form className="w-full h-[80vh] flex items-center justify-center" method="post">
                 <input type="hidden" name="_token" value={ document.querySelector("meta[name='csrf-token']").getAttribute("content") } />
                 <div>
-                    <input name="username" type="text" placeholder="Username" className="m-2 w-100 p-2 rounded-xl outline-none border-b-5 focus:border-indigo-400 bg-gray-200" />
+                    <input name="email" type="text" placeholder="Username" className="m-2 w-100 p-2 rounded-xl outline-none border-b-5 focus:border-indigo-400 bg-gray-200" />
                     <br />
                     <input name="password" type="text" placeholder="Password" className="m-2 w-100 p-2 rounded-xl outline-none border-b-5 focus:border-indigo-400 bg-gray-200" />
                     <br />
