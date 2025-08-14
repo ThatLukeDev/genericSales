@@ -7,6 +7,7 @@
         @if ($errors->any())
             <meta name="error" content="{{ $errors->all()[0] }}">
         @endif
+        <meta name="auth" content="{{ Auth::check() ? 'true' : 'false' }}">
 
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
