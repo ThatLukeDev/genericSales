@@ -29,4 +29,8 @@ class AdminController extends Controller
     function viewAdmin() {
 	    return Inertia::render('admin');
     }
+
+    function viewEditor() {
+	    return Inertia::render('editor');
+    }
 }
