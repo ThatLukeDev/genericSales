@@ -16,3 +16,4 @@ Route::post('/login', [AdminController::class, 'login'])->name('login.request');
 Route::get('/admin', [AdminController::class, 'viewAdmin'])->middleware('auth')->name('admin');
 
 Route::get('/admin/page/{id}', [AdminController::class, 'viewEditor'])->middleware('auth')->name('editor');
+Route::post('/admin/page/{id}', [AdminController::class, 'editor'])->middleware('auth')->name('editor.request');

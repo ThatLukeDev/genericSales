@@ -35,4 +35,14 @@ class AdminController extends Controller
     function viewEditor($id) {
 	    return Inertia::render('editor', ["id" => $id, "detail" => Detail::getPage($id)]);
     }
+
+    function editor($id, Request $request) {
+	    Detail::getPage($id)->update([
+		    "title" => $request->title,
+		    "text" => $request->text,
+		    "description" => $request->description
+	    ]);
+
+	    return redirect("/admin/page/" . $id);
+    }
 }
