@@ -7,6 +7,8 @@ use Inertia\Inertia;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\Detail;
+
 class AdminController extends Controller
 {
     function viewLogin() {
@@ -30,7 +32,7 @@ class AdminController extends Controller
 	    return Inertia::render('admin');
     }
 
-    function viewEditor() {
-	    return Inertia::render('editor');
+    function viewEditor($id) {
+	    return Inertia::render('editor', ["id" => $id, "detail" => Detail::getPage($id)]);
     }
 }
