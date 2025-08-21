@@ -1,19 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use Livewire\Volt\Volt;
 
-use App\Http\Controllers\ViewController;
-use App\Http\Controllers\AdminController;
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
-Route::get('/', [ViewController::class, 'viewHome'])->name('home');
-Route::get('/about', [ViewController::class, 'viewAbout'])->name('about');
-Route::get('/contact', [ViewController::class, 'viewContact'])->name('contact');
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-Route::get('/login', [AdminController::class, 'viewLogin'])->name('login');
-Route::post('/login', [AdminController::class, 'login'])->name('login.request');
+Route::middleware(['auth'])->group(function () {
+    Route::redirect('settings', 'settings/profile');
 
-Route::get('/admin', [AdminController::class, 'viewAdmin'])->middleware('auth')->name('admin');
+    Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
+    Volt::route('settings/password', 'settings.password')->name('settings.password');
+    Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+});
 
-Route::get('/admin/page/{id}', [AdminController::class, 'viewEditor'])->middleware('auth')->name('editor');
-Route::post('/admin/page/{id}', [AdminController::class, 'editor'])->middleware('auth')->name('editor.request');
+require __DIR__.'/auth.php';
