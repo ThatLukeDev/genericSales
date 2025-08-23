@@ -13,8 +13,8 @@ class Page extends Model
 		"description"
 	];
 
-	public function get($name) {
-		$page = Page::where("name", $name)->firstOr(function() {
+	public static function get($name) {
+		return Page::where("name", $name)->firstOr(function() {
 			return Page::firstOrCreate(["name" => "error"], [
 				"name" => "error",
 				"title" => "404",
