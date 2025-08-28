@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="h-full" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 	<head>
 		@include("partials.head")
 	</head>
-	<body>
+	<body class="h-full">
 		{{ $slot }}
 	</body>
 </html>
