@@ -10,11 +10,22 @@ class ViewAdmin extends Component
 {
 	public $pages;
 	public $view;
-	public $expanded;
+
+	public $title;
+	public $text;
+	public $description;
 
 	public function changePage($page)
 	{
 		$this->view = $page;
+	}
+
+	public function save() {
+		$expanded = Page::where("name", $this->view)->first()->update([
+			"title" => $this->title,
+			"text" => $this->text,
+			"description" => $this->description
+		]);
 	}
 
 	public function mount()
@@ -25,7 +36,12 @@ class ViewAdmin extends Component
 	public function render()
 	{
 		$this->pages = Page::where("name", "not like", "error")->get();
-		$this->expanded = Page::get($this->view);
+		$expanded = Page::get($this->view);
+
+		$this->title = $expanded->title;
+		$this->text = $expanded->text;
+		$this->description = $expanded->description;
+
 		return view('livewire.view-admin');
 	}
 }

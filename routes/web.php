@@ -9,7 +9,7 @@ use App\Livewire\ViewAdmin;
 
 Route::get("/", ViewPage::class);
 
-Route::get("pages/{page}", ViewPage::class);
+Route::get("pages/{name}", ViewPage::class);
 
 Route::get("login", ViewLogin::class)->name("login");
 

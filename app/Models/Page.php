@@ -14,7 +14,7 @@ class Page extends Model
 	];
 
 	public static function get($name) {
-		return Page::where("name", $name)->firstOr(function() {
+		return Page::where("name", "like", $name)->firstOr(function() {
 			return Page::firstOrCreate(["name" => "error"], [
 				"name" => "error",
 				"title" => "404",
