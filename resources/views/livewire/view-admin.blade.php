@@ -1,8 +1,11 @@
 <div class="flex h-full">
-	<div class="w-50 bg-gray-200 h-full">
-	@foreach ($pages as $page)
-		<a wire:click="changePage('{{ $page->name }}')" class="cursor-pointer p-2 w-full text-center block {{ $page->name == $view ? 'bg-gray-300' : '' }}">{{ $page->name }}</a>
-	@endforeach
+	<div wire:sortable="updateOrder" class="w-50 bg-gray-200 h-full">
+		@foreach ($pages as $page)
+			<div wire:click="changePage('{{ $page->name }}')" wire:sortable.item="{{ $page->id }}" wire:key="page-{{ $page->id }}" class="cursor-pointer p-2 flex items-center hover:bg-gray-100 {{ $page->name == $view ? 'bg-gray-300' : '' }}">
+				<a>{{ $page->name }}</a>
+				<x-gmdi-drag-indicator-o wire:sortable.handle class="size-5 fill-gray-400 ml-auto"></x-gmdi-drag-indicator-o>
+			</div>
+		@endforeach
 	</div>
 	<div class="h-full p-10 w-full">
 		<input wire:model="title" class="text-4xl block border-2 my-1 w-full">

@@ -28,6 +28,9 @@ class ViewAdmin extends Component
 		]);
 	}
 
+	public function updateOrder() {
+	}
+
 	public function mount()
 	{
 		$this->view = "Home";
