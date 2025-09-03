@@ -28,7 +28,19 @@ class ViewAdmin extends Component
 		]);
 	}
 
-	public function updateOrder() {
+	public function updateOrder($pages) {
+		$deleting = false;
+
+		// TODO
+		foreach ($pages as $page) {
+			if ($deleting) {
+			}
+			else {
+				if ($page->value = "delete") {
+					$deleting = true;
+				}
+			}
+		}
 	}
 
 	public function mount()

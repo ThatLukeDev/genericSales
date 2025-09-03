@@ -10,7 +10,8 @@ class Page extends Model
 		"name",
 		"title",
 		"text",
-		"description"
+		"description",
+		"order"
 	];
 
 	public static function get($name) {
