@@ -31,14 +31,17 @@ class ViewAdmin extends Component
 	public function updateOrder($pages) {
 		$deleting = false;
 
-		// TODO
 		foreach ($pages as $page) {
 			if ($deleting) {
+				Page::find($page["value"])->delete();
+			}
+			elseif ($page["value"] == "delete") {
+				$deleting = true;
 			}
 			else {
-				if ($page->value = "delete") {
-					$deleting = true;
-				}
+				Page::find($page["value"])->update([
+					"order" => $page["order"]
+				]);
 			}
 		}
 	}
@@ -50,7 +53,7 @@ class ViewAdmin extends Component
 
 	public function render()
 	{
-		$this->pages = Page::where("name", "not like", "error")->get();
+		$this->pages = Page::list();
 		$expanded = Page::get($this->view);
 
 		$this->title = $expanded->title;

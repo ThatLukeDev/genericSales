@@ -24,4 +24,8 @@ class Page extends Model
 			]);
 		});
 	}
+
+	public static function list() {
+		return Page::where("name", "not like", "error")->orderBy("order")->get();
+	}
 }
