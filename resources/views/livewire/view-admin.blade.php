@@ -6,6 +6,9 @@
 				<x-gmdi-drag-indicator-o wire:sortable.handle class="size-5 fill-gray-400 ml-auto"></x-gmdi-drag-indicator-o>
 			</div>
 		@endforeach
+		<div wire:click="addNew()" class="w-full flex justify-center">
+			<x-gmdi-add class="fill-gray-400 size-10"></x-gmdi-add>
+		</div>
 		<div wire:sortable.item="delete" wire:key="delete" class="mt-auto">
 			<x-gmdi-delete wire:sortable.handle class="fill-gray-400"></x-gmdi-delete>
 		</div>

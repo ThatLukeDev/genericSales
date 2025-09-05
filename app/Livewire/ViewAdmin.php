@@ -46,6 +46,15 @@ class ViewAdmin extends Component
 		}
 	}
 
+	public function addNew() {
+		Page::create([
+			"name" => "New Page",
+			"title" => "New Page",
+			"text" => "Text for page",
+			"description" => "Description for page"
+		]);
+	}
+
 	public function mount()
 	{
 		$this->view = "Home";
