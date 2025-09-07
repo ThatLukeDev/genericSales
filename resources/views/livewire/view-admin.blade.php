@@ -2,11 +2,14 @@
 	<div wire:sortable="updateOrder" class="w-50 bg-gray-200 h-full flex flex-col">
 		@foreach ($pages as $page)
 			<div wire:click="changePage('{{ $page->name }}')" wire:sortable.item="{{ $page->id }}" wire:key="page-{{ $page->id }}" class="cursor-pointer p-2 flex items-center flex-none hover:bg-gray-100 {{ $page->name == $view ? 'bg-gray-300' : '' }}">
-				<a>{{ $page->name }}</a>
-				<x-gmdi-drag-indicator-o wire:sortable.handle class="size-5 fill-gray-400 ml-auto"></x-gmdi-drag-indicator-o>
+				<input id="{{$page->name}}editname" value="{{ $page->name }}" class="w-3/5 not-focus:cursor-pointer" readonly @click="
+					if ($event.target.hasAttribute('readonly')) { $event.target.blur(); } else { $event.stopPropagation(); }
+				" wire:submit="err TODO">
+				<x-gmdi-edit class="size-5 fill-gray-400 ml-auto mr-2" @click.stop="let ele = document.getElementById('{{ $page->name }}editname'); ele.removeAttribute('readonly'); ele.focus()"></x-gmdi-edit>
+				<x-gmdi-drag-indicator-o wire:sortable.handle class="size-5 fill-gray-400"></x-gmdi-drag-indicator-o>
 			</div>
 		@endforeach
-		<div wire:click="addNew()" class="w-full flex justify-center">
+		<div wire:click="addNew()" class="mt-2 w-full flex justify-center cursor-pointer">
 			<x-gmdi-add class="fill-gray-400 size-10"></x-gmdi-add>
 		</div>
 		<div wire:sortable.item="delete" wire:key="delete" class="mt-auto">
