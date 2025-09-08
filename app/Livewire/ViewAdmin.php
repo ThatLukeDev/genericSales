@@ -55,6 +55,10 @@ class ViewAdmin extends Component
 		]);
 	}
 
+	public function renamePage($old, $new) {
+		Page::where("name", $old)->update(["name" => $new]);
+	}
+
 	public function mount()
 	{
 		$this->view = "Home";
