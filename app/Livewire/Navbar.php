@@ -4,10 +4,16 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
+use app\Models\Page;
+
 class Navbar extends Component
 {
-    public function render()
-    {
-        return view('livewire.navbar');
-    }
+	public $pages;
+
+	public function render()
+	{
+		$this->pages = Page::list();
+
+		return view('livewire.navbar');
+	}
 }

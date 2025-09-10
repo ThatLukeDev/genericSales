@@ -25,6 +25,6 @@ class ViewLogin extends Component
 
 	public function render()
 	{
-		return view('livewire.view-login');
+		return view('livewire.view-login')->layout("components.layouts.admin");
 	}
 }

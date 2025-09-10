@@ -73,6 +73,6 @@ class ViewAdmin extends Component
 		$this->text = $expanded->text;
 		$this->description = $expanded->description;
 
-		return view('livewire.view-admin');
+		return view('livewire.view-admin')->layout("components.layouts.admin");
 	}
 }
