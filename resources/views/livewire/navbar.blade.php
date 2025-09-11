@@ -1,5 +1,6 @@
-<nav class="bg-gray-700 py-5">
+<nav x-data="{dropdown: false}" class="bg-gray-700 py-5 max-md:flex flex-col">
+	<x-gmdi-menu @click="dropdown = !dropdown" class="fill-white ml-auto size-10 mr-5 cursor-pointer"></x-gmdi-menu>
 	@foreach ($pages as $page)
-		<a wire:navigate href="/pages/{{ $page->name }}" class="text-white text-xl mx-10">{{ $page->name }}</a>
+		<a wire:navigate href="/pages/{{ $page->name }}" x-show="dropdown" class="text-white text-xl text-center mx-10 max-md:mt-10">{{ $page->name }}</a>
 	@endforeach
 </nav>
