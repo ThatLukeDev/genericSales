@@ -2,9 +2,9 @@
 	<div wire:sortable="updateOrder" class="w-50 bg-gray-200 h-full flex flex-col">
 		@foreach ($pages as $page)
 			<div wire:click="changePage('{{ $page->name }}')" wire:sortable.item="{{ $page->id }}" wire:key="page-{{ $page->id }}" class="cursor-pointer p-2 flex items-center flex-none hover:bg-gray-100 {{ $page->name == $view ? 'bg-gray-300' : '' }}">
-				<input id="{{$page->name}}editname" value="{{ $page->name }}" class="w-3/5 not-focus:cursor-pointer" readonly @click="
+				<input x-ref="{{$page->name}}editname" id="{{$page->name}}editname" value="{{ $page->name }}" class="w-3/5 not-focus:cursor-pointer" readonly @click="
 					if ($event.target.hasAttribute('readonly')) { $event.target.blur(); } else { $event.stopPropagation(); }
-				" @keydown.enter="$wire.renamePage('{{ $page->name }}', $event.target.value)">
+				" @keydown.enter="$wire.renamePage('{{ $page->name }}', $event.target.value)" @click.outside="(!$refs.{{$page->name}}editname.hasAttribute('readonly')) && $wire.renamePage('{{ $page->name }}', $refs.{{$page->name}}editname.value)">
 				<x-gmdi-edit class="size-5 fill-gray-400 ml-auto mr-2" @click.stop="let ele = document.getElementById('{{ $page->name }}editname'); ele.removeAttribute('readonly'); ele.focus()"></x-gmdi-edit>
 				<x-gmdi-drag-indicator-o wire:sortable.handle class="size-5 fill-gray-400"></x-gmdi-drag-indicator-o>
 			</div>
